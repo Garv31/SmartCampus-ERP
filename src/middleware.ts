@@ -12,14 +12,12 @@ export default auth((req) => {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // Admin routes
   if (pathname.startsWith("/admin")) {
     if ((user as any).role !== "ADMIN") {
       return NextResponse.redirect(new URL("/student/dashboard", req.url));
     }
   }
 
-  // Student routes
   if (pathname.startsWith("/student")) {
     if ((user as any).role !== "STUDENT") {
       return NextResponse.redirect(new URL("/admin/dashboard", req.url));

@@ -17,18 +17,15 @@ export function LoginForm() {
 
     const result = await login(formData);
 
-    if (result?.error) {
-      setError(result.error);
-      return;
-    }
+console.log("LOGIN RESULT:", result);
 
-    if (result.role === "ADMIN") {
-      window.location.href = "/admin/dashboard";
-    } else {
-      window.location.href = "/student/dashboard";
-    }
+if (result?.error) {
+  setError(result.error);
+  return;
+}
+
+window.location.href = "/";
   }
-
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-5">
       <div>

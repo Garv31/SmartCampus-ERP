@@ -19,20 +19,24 @@ export default {
   },
 
   callbacks: {
-    authorized({ auth, request }: any) {
-      const loggedIn = !!auth?.user;
+    authorized({ auth }: any) {
+      return !!auth;
+    },
 
-      const pathname = request.nextUrl.pathname;
-
-      if (pathname.startsWith("/admin")) {
-        return loggedIn;
+    async jwt({ token, user }: any) {
+      if (user) {
+        token.role = user.role;
       }
 
-      if (pathname.startsWith("/student")) {
-        return loggedIn;
+      return token;
+    },
+
+    async session({ session, token }: any) {
+      if (session.user) {
+        (session.user as any).role = token.role;
       }
 
-      return true;
+      return session;
     },
   },
 } satisfies NextAuthConfig;
