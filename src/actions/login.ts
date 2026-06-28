@@ -19,11 +19,12 @@ export async function login(formData: FormData) {
       password,
       redirect: false,
     });
-
-    console.log("LOGIN SUCCESS");
-
+    
+    const session = await auth();
+    
     return {
       success: true,
+      role: (session?.user as any)?.role,
     };
   } catch (error) {
     console.log("LOGIN FAILED");

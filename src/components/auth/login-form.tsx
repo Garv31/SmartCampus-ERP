@@ -22,7 +22,11 @@ export function LoginForm() {
       return;
     }
 
-    window.location.href = "/admin/dashboard";
+    if (result.role === "ADMIN") {
+      window.location.href = "/admin/dashboard";
+    } else {
+      window.location.href = "/student/dashboard";
+    }
   }
 
   return (
