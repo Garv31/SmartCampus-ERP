@@ -22,7 +22,7 @@ export default async function StudentAssignmentsPage() {
 
       <div className="grid gap-6">
 
-        {assignments.map((assignment) => {
+        {assignments.map((assignment: any) => {
           const overdue = new Date(assignment.dueDate) < new Date();
 
           return (

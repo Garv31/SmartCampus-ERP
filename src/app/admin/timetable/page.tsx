@@ -35,7 +35,7 @@ export default async function TimetablePage() {
             </div>
 
             <div className="grid gap-4">
-                {timetable.map((item) => (
+            {timetable.map((item: any) => (
                     <div
                         key={item.id}
                         className="rounded-3xl bg-white p-5 shadow"

@@ -1,5 +1,4 @@
 import { prisma } from "../lib/prisma";
-import { Role } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 async function main() {
@@ -14,7 +13,7 @@ async function main() {
       name: "Admin",
       email: "admin@smartcampus.com",
       password: hashedPassword,
-      role: Role.ADMIN,
+      role: "ADMIN",
     },
   });
 

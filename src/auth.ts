@@ -1,10 +1,16 @@
 import NextAuth from "next-auth";
+import authConfig from "./auth.config";
+
 import Credentials from "next-auth/providers/credentials";
+
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
+
 import bcrypt from "bcryptjs";
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
+
   adapter: PrismaAdapter(prisma),
 
   session: {
@@ -19,11 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
 
       async authorize(credentials) {
-        console.log("========== AUTHORIZE ==========");
-        console.log("Credentials:", credentials);
-
         if (!credentials?.email || !credentials?.password) {
-          console.log("Missing credentials");
           return null;
         }
 
@@ -33,26 +35,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
 
-        console.log("Database user:", user);
+        if (!user) return null;
 
-        if (!user) {
-          console.log("User not found");
-          return null;
-        }
-
-        const isValid = await bcrypt.compare(
+        const valid = await bcrypt.compare(
           credentials.password as string,
           user.password
         );
 
-        console.log("Password match:", isValid);
-
-        if (!isValid) {
-          console.log("Wrong password");
-          return null;
-        }
-
-        console.log("LOGIN SUCCESS");
+        if (!valid) return null;
 
         return {
           id: user.id,
@@ -81,13 +71,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return session;
     },
-
-    async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl) ? url : baseUrl;
-    },
-  },
-
-  pages: {
-    signIn: "/login",
   },
 });

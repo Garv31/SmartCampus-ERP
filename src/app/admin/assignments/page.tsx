@@ -27,7 +27,7 @@ export default async function AssignmentsPage() {
       </div>
   
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {assignments.map((assignment) => (
+        {assignments.map((assignment: any) => (
           <div
             key={assignment.id}
             className="rounded-3xl bg-white p-6 shadow-md"

@@ -50,7 +50,7 @@ export default async function NoticesPage() {
           </p>
 
           <h2 className="mt-2 text-4xl font-bold text-red-500">
-            {notices.filter((n) => n.pinned).length}
+          {notices.filter((n: any) => n.pinned).length}
           </h2>
         </div>
 
@@ -67,7 +67,7 @@ export default async function NoticesPage() {
 
       {/* Notices */}
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {notices.map((notice) => (
+        {notices.map((notice: any) => (
           <div
             key={notice.id}
             className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-blue-200 hover:shadow-xl"

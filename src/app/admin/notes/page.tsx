@@ -31,7 +31,7 @@ export default async function NotesPage() {
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-        {notes.map((note) => (
+        {notes.map((note: any) => (
           <div
             key={note.id}
             className="rounded-3xl bg-white p-6 shadow-md"

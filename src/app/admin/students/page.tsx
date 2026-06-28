@@ -72,7 +72,7 @@ export default async function StudentsPage({
   <div className="rounded-3xl bg-white p-6 shadow-sm">
     <p className="text-slate-500">Courses</p>
     <h2 className="mt-2 text-4xl font-bold text-green-600">
-      {[...new Set(students.map((s) => s.course))].length}
+    {[...new Set(students.map((s: any) => s.course))].length}
     </h2>
   </div>
 
@@ -81,7 +81,7 @@ export default async function StudentsPage({
     <h2 className="mt-2 text-4xl font-bold text-purple-600">
       {students.length
         ? (
-            students.reduce((a, b) => a + b.semester, 0) /
+          students.reduce((a: any, b: any) => a + b.semester, 0) /
             students.length
           ).toFixed(1)
         : 0}
@@ -99,7 +99,7 @@ export default async function StudentsPage({
 
       {/* Students Grid */}
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {students.map((student) => (
+        {students.map((student: any) => (
           <div
             key={student.id}
             className="rounded-3xl bg-white p-6 shadow transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
