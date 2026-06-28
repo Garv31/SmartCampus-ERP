@@ -169,15 +169,35 @@ Password:
 
 # 📸 Screenshots
 
-Add screenshots here.
 
-- Login
-- Admin Dashboard
-- Student Dashboard
-- Attendance
-- Notes
-- Timetable
 
+### Login
+
+![Login](public/screenshots/login.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](public/screenshots/admin-dashboard.png)
+
+### Student Dashboard
+
+![Student Dashboard](public/screenshots/student-dashboard.png)
+
+### Attendance
+
+![Attendance](public/screenshots/attendance.png)
+
+### Notes
+
+![Notes](public/screenshots/notes.png)
+
+### Notices
+
+![Notices](public/screenshots/notice.png)
+
+### Timetable
+
+![Timetable](public/screenshots/timetable.png)
 ---
 
 # 🚀 Future Improvements
